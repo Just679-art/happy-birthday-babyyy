@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ridhi! 🎂</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&family=Sacramento&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- CURSOR SPARKLE TRAIL -->
+    <canvas id="sparkle-canvas"></canvas>
+
+    <!-- PRELOADER - Candle Lighting -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="candle-loader">
+                <div class="candle-body"></div>
+                <div class="candle-flame">
+                    <div class="flame-inner"></div>
+                </div>
+                <div class="candle-wick"></div>
+                <div class="candle-glow"></div>
+            </div>
+            <p class="loading-text">Lighting candles for Ridhi...</p>
+            <div class="loading-bar">
+                <div class="loading-fill"></div>
+            </div>
+            <p class="loading-percent">0%</p>
+        </div>
+    </div>
+
+    <!-- ENVELOPE INTRO -->
+    <div id="envelope-intro">
+        <div class="envelope-particles" id="envelope-particles"></div>
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body">
+                    <div class="heart-seal">❤️</div>
+                    <div class="letter">
+                        <p class="letter-text">You have a special surprise!</p>
+                        <p class="letter-name">~ For Ridhi ~</p>
+                    </div>
+                </div>
+            </div>
+            <button class="open-btn" onclick="openEnvelope()">
+                <span class="btn-sparkle"></span>
+                <span>Open Me</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- FIREWORKS CANVAS -->
+    <canvas id="fireworks-canvas"></canvas>
+
+    <!-- CONFETTI CANVAS -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- FLOATING HEARTS -->
+    <div id="floating-elements"></div>
+
+    <!-- MUSIC TOGGLE -->
+    <button id="music-toggle" onclick="toggleMusic()">
+        <span class="music-icon">♫</span>
+        <div class="music-rings"></div>
+    </button>
+    <audio id="birthday-music" loop preload="auto">
+        <source src="https://media.vole.wtf/happy-birthday/jazz-trio.mp3" type="audio/mpeg">
+        <source src="https://media.vole.wtf/happy-birthday/orchestral.mp3" type="audio/mpeg">
+        <source src="https://media.vole.wtf/happy-birthday/acoustic-guitar.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content" style="display:none;">
+
+        <!-- AURORA BACKGROUND -->
+        <div class="aurora-bg">
+            <div class="aurora-layer a1"></div>
+            <div class="aurora-layer a2"></div>
+            <div class="aurora-layer a3"></div>
+        </div>
+
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="stars-container" id="stars"></div>
+            <div class="shooting-stars">
+                <div class="shooting-star"></div>
+                <div class="shooting-star s2"></div>
+                <div class="shooting-star s3"></div>
+            </div>
+            <div class="hero-content">
+                <div class="birthday-badge">
+                    <span class="badge-star">★</span> It's Her Special Day <span class="badge-star">★</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="line1" data-text="Happy">Happy</span>
+                    <span class="line2">Birthday</span>
+                    <span class="line3">
+                        <span class="letter-animate" style="--i:0">R</span>
+                        <span class="letter-animate" style="--i:1">i</span>
+                        <span class="letter-animate" style="--i:2">d</span>
+                        <span class="letter-animate" style="--i:3">h</span>
+                        <span class="letter-animate" style="--i:4">i</span>
+                        <span class="letter-animate" style="--i:5">!</span>
+                    </span>
+                </h1>
+                <div class="cake-3d">
+                    <div class="cake-layer layer-3">
+                        <div class="cake-frosting frosting-3"></div>
+                        <div class="cake-sprinkle sp1"></div>
+                        <div class="cake-sprinkle sp2"></div>
+                        <div class="cake-sprinkle sp3"></div>
+                    </div>
+                    <div class="cake-layer layer-2">
+                        <div class="cake-frosting frosting-2"></div>
+                        <div class="cake-cherry cherry-1"></div>
+                        <div class="cake-cherry cherry-2"></div>
+                        <div class="cake-sprinkle sp4"></div>
+                        <div class="cake-sprinkle sp5"></div>
+                    </div>
+                    <div class="cake-layer layer-1">
+                        <div class="cake-frosting frosting-1"></div>
+                        <div class="cake-drip drip-1"></div>
+                        <div class="cake-drip drip-2"></div>
+                        <div class="cake-drip drip-3"></div>
+                        <div class="cake-drip drip-4"></div>
+                    </div>
+                    <div class="cake-candles">
+                        <div class="b-candle c1"><div class="b-flame"></div></div>
+                        <div class="b-candle c2"><div class="b-flame"></div></div>
+                        <div class="b-candle c3"><div class="b-flame"></div></div>
+                        <div class="b-candle c4"><div class="b-flame"></div></div>
+                        <div class="b-candle c5"><div class="b-flame"></div></div>
+                    </div>
+                    <div class="cake-plate"></div>
+                    <div class="cake-shadow"></div>
+                </div>
+                <p class="hero-subtitle">
+                    <span class="typewriter" id="typewriter"></span>
+                    <span class="cursor-blink">|</span>
+                </p>
+                <div class="scroll-hint">
+                    <div class="mouse-icon">
+                        <div class="mouse-wheel"></div>
+                    </div>
+                    <span>Scroll Down</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAGICAL DIVIDER -->
+        <div class="section-divider">
+            <div class="divider-line"></div>
+            <span class="divider-icon">✨</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- WISH CARDS SECTION -->
+        <section class="wishes-section">
+            <h2 class="section-title">
+                <span class="sparkle">✦</span>
+                Birthday Wishes
+                <span class="sparkle">✦</span>
+            </h2>
+            <div class="wishes-grid">
+                <div class="wish-card" data-tilt data-color="#ff6b8a">
+                    <div class="card-shine"></div>
+                    <div class="wish-icon">🌟</div>
+                    <h3>Dream Big</h3>
+                    <p>May all your dreams come true this year. The universe has amazing plans for you, Ridhi!</p>
+                    <div class="wish-glow"></div>
+                    <div class="card-border-glow"></div>
+                </div>
+                <div class="wish-card" data-tilt data-color="#ffd166">
+                    <div class="card-shine"></div>
+                    <div class="wish-icon">💖</div>
+                    <h3>Love & Joy</h3>
+                    <p>Wishing you endless love, laughter, and happiness. You deserve all the beautiful things in life!</p>
+                    <div class="wish-glow"></div>
+                    <div class="card-border-glow"></div>
+                </div>
+                <div class="wish-card" data-tilt data-color="#06d6a0">
+                    <div class="card-shine"></div>
+                    <div class="wish-icon">🎉</div>
+                    <h3>Celebrate You</h3>
+                    <p>Today is YOUR day! Enjoy every moment, every smile, and every surprise that comes your way!</p>
+                    <div class="wish-glow"></div>
+                    <div class="card-border-glow"></div>
+                </div>
+                <div class="wish-card" data-tilt data-color="#9b5de5">
+                    <div class="card-shine"></div>
+                    <div class="wish-icon">🚀</div>
+                    <h3>Shine Bright</h3>
+                    <p>Keep shining like the star you are. This new year of your life is going to be absolutely magical!</p>
+                    <div class="wish-glow"></div>
+                    <div class="card-border-glow"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="divider-line"></div>
+            <span class="divider-icon">💫</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- TIMELINE SECTION -->
+        <section class="timeline-section">
+            <h2 class="section-title">
+                <span class="sparkle">✦</span>
+                Why You're Special
+                <span class="sparkle">✦</span>
+            </h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-emoji">😊</div>
+                        <h3>Your Smile</h3>
+                        <p>Your smile can light up the darkest room. It's contagious and makes everyone around you happy!</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-emoji">💪</div>
+                        <h3>Your Strength</h3>
+                        <p>The way you handle everything with grace and courage inspires everyone around you!</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-emoji">🤗</div>
+                        <h3>Your Kindness</h3>
+                        <p>You always put others first and spread kindness wherever you go. The world needs more people like you!</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-emoji">⭐</div>
+                        <h3>Your Spirit</h3>
+                        <p>Your energy and enthusiasm for life is truly remarkable. You make everything feel like an adventure!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="divider-line"></div>
+            <span class="divider-icon">🎁</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- 3D GIFT BOX SECTION -->
+        <section class="gift-section">
+            <h2 class="section-title">
+                <span class="sparkle">✦</span>
+                A Gift For You
+                <span class="sparkle">✦</span>
+            </h2>
+            <div class="gift-box-container">
+                <div class="gift-box" id="giftBox" onclick="openGift()">
+                    <div class="gift-lid">
+                        <div class="gift-bow">
+                            <div class="bow-loop bow-left"></div>
+                            <div class="bow-loop bow-right"></div>
+                            <div class="bow-knot"></div>
+                        </div>
+                        <div class="lid-face lid-front"></div>
+                        <div class="lid-face lid-back"></div>
+                        <div class="lid-face lid-left"></div>
+                        <div class="lid-face lid-right"></div>
+                        <div class="lid-face lid-top"></div>
+                    </div>
+                    <div class="gift-base">
+                        <div class="base-face base-front"></div>
+                        <div class="base-face base-back"></div>
+                        <div class="base-face base-left"></div>
+                        <div class="base-face base-right"></div>
+                        <div class="base-face base-bottom"></div>
+                        <div class="gift-ribbon-v"></div>
+                        <div class="gift-ribbon-h"></div>
+                    </div>
+                    <div class="gift-message" id="giftMessage">
+                        <p>You are the most amazing person! Never change who you are. Happy Birthday, Ridhi! 🎂❤️</p>
+                    </div>
+                    <div class="click-hint">
+                        <span class="hint-hand">👆</span>
+                        <span>Tap to open!</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="divider-line"></div>
+            <span class="divider-icon">🎈</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- BALLOON POP GAME -->
+        <section class="balloon-section">
+            <h2 class="section-title">
+                <span class="sparkle">✦</span>
+                Pop The Balloons!
+                <span class="sparkle">✦</span>
+            </h2>
+            <p class="balloon-subtitle">Click the balloons to reveal birthday messages!</p>
+            <div class="balloon-score">Popped: <span id="popCount">0</span> / 6</div>
+            <div class="balloon-container" id="balloonContainer">
+                <div class="balloon" style="--color: #ff6b8a; --delay: 0s" onclick="popBalloon(this, 'You are amazing! ✨')">
+                    <div class="balloon-body"><span class="balloon-shine"></span></div>
+                    <div class="balloon-string"></div>
+                </div>
+                <div class="balloon" style="--color: #ffd166; --delay: 0.3s" onclick="popBalloon(this, 'Stay beautiful! 💖')">
+                    <div class="balloon-body"><span class="balloon-shine"></span></div>
+                    <div class="balloon-string"></div>
+                </div>
+                <div class="balloon" style="--color: #06d6a0; --delay: 0.6s" onclick="popBalloon(this, 'Keep smiling! 😊')">
+                    <div class="balloon-body"><span class="balloon-shine"></span></div>
+                    <div class="balloon-string"></div>
+                </div>
+                <div class="balloon" style="--color: #118ab2; --delay: 0.9s" onclick="popBalloon(this, 'Shine bright! 🌟')">
+                    <div class="balloon-body"><span class="balloon-shine"></span></div>
+                    <div class="balloon-string"></div>
+                </div>
+                <div class="balloon" style="--color: #ef476f; --delay: 1.2s" onclick="popBalloon(this, 'Dream big! 🚀')">
+                    <div class="balloon-body"><span class="balloon-shine"></span></div>
+                    <div class="balloon-string"></div>
+                </div>
+                <div class="balloon" style="--color: #9b5de5; --delay: 1.5s" onclick="popBalloon(this, 'Love yourself! 💝')">
+                    <div class="balloon-body"><span class="balloon-shine"></span></div>
+                    <div class="balloon-string"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="divider-line"></div>
+            <span class="divider-icon">🎰</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- SPIN WHEEL SECTION -->
+        <section class="wheel-section">
+            <h2 class="section-title">
+                <span class="sparkle">✦</span>
+                Spin Your Fortune!
+                <span class="sparkle">✦</span>
+            </h2>
+            <p class="wheel-subtitle">Spin the wheel to see what this year holds for you!</p>
+            <div class="wheel-container">
+                <div class="wheel-pointer">▼</div>
+                <div class="wheel" id="wheel">
+                    <div class="wheel-segment" style="--i:0; --color: #ff6b8a;">
+                        <span>Endless Love 💖</span>
+                    </div>
+                    <div class="wheel-segment" style="--i:1; --color: #ffd166;">
+                        <span>Big Surprise 🎁</span>
+                    </div>
+                    <div class="wheel-segment" style="--i:2; --color: #9b5de5;">
+                        <span>Dream Trip ✈️</span>
+                    </div>
+                    <div class="wheel-segment" style="--i:3; --color: #06d6a0;">
+                        <span>New Friends 🤗</span>
+                    </div>
+                    <div class="wheel-segment" style="--i:4; --color: #118ab2;">
+                        <span>Good Luck 🍀</span>
+                    </div>
+                    <div class="wheel-segment" style="--i:5; --color: #ef476f;">
+                        <span>Lots of Cake 🎂</span>
+                    </div>
+                    <div class="wheel-segment" style="--i:6; --color: #f4a261;">
+                        <span>Happiness 😊</span>
+                    </div>
+                    <div class="wheel-segment" style="--i:7; --color: #e76f51;">
+                        <span>Success 🚀</span>
+                    </div>
+                </div>
+                <button class="spin-btn" id="spinBtn" onclick="spinWheel()">
+                    🎯 SPIN!
+                </button>
+            </div>
+            <div class="wheel-result" id="wheelResult"></div>
+        </section>
+
+        <div class="section-divider">
+            <div class="divider-line"></div>
+            <span class="divider-icon">🔮</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- MAGIC 8-BALL SECTION -->
+        <section class="magic-section">
+            <h2 class="section-title">
+                <span class="sparkle">✦</span>
+                Ask the Magic Ball
+                <span class="sparkle">✦</span>
+            </h2>
+            <p class="magic-subtitle">Ask a yes/no question, then shake the ball!</p>
+            <div class="magic-ball-container">
+                <div class="magic-ball" id="magicBall" onclick="shakeMagicBall()">
+                    <div class="ball-shine"></div>
+                    <div class="ball-window">
+                        <div class="ball-triangle">
+                            <span class="ball-answer" id="ballAnswer">8</span>
+                        </div>
+                    </div>
+                    <div class="ball-text">Tap Me!</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="divider-line"></div>
+            <span class="divider-icon">🎪</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- SCRATCH CARD SECTION -->
+        <section class="scratch-section">
+            <h2 class="section-title">
+                <span class="sparkle">✦</span>
+                Scratch to Reveal!
+                <span class="sparkle">✦</span>
+            </h2>
+            <p class="scratch-subtitle">Scratch the card below to reveal a special message!</p>
+            <div class="scratch-card-container">
+                <div class="scratch-card">
+                    <div class="scratch-hidden-msg">
+                        <span class="scratch-emoji">🎉</span>
+                        <p>You are the BEST thing that ever happened!</p>
+                        <p class="scratch-sub">Happy Birthday Ridhi! 🥳❤️</p>
+                    </div>
+                    <canvas id="scratchCanvas" width="320" height="200"></canvas>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="section-divider">
+            <div class="divider-line"></div>
+            <span class="divider-icon">💌</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- LETTER SECTION -->
+        <section class="letter-section">
+            <h2 class="section-title">
+                <span class="sparkle">✦</span>
+                A Letter For Ridhi
+                <span class="sparkle">✦</span>
+            </h2>
+            <div class="letter-card">
+                <div class="letter-wax-seal">💌</div>
+                <div class="letter-header">
+                    <span class="letter-date">March 15, 2026</span>
+                    <span class="letter-dear">Dear Ridhi,</span>
+                </div>
+                <div class="letter-body" id="letterBody">
+                    <p>On this beautiful day, I just want you to know how special you are. Every moment with you is a blessing, and your presence makes the world a brighter place.</p>
+                    <p>You have a heart of gold and a soul that shines. May this new chapter of your life bring you everything you've ever wished for and more.</p>
+                    <p>Here's to more laughs, more adventures, more memories, and more reasons to celebrate. You deserve nothing but the very best!</p>
+                    <p>Happy Birthday to the most amazing person I know. Keep being YOU — because you are perfect just the way you are.</p>
+                </div>
+                <div class="letter-footer">
+                    <span class="letter-sign">With lots of love,</span>
+                    <span class="letter-from">Your Friend ❤️</span>
+                </div>
+                <div class="letter-corner lc-tl"></div>
+                <div class="letter-corner lc-tr"></div>
+                <div class="letter-corner lc-bl"></div>
+                <div class="letter-corner lc-br"></div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="divider-line"></div>
+            <span class="divider-icon">⏰</span>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- COUNTDOWN SECTION -->
+        <section class="countdown-section">
+            <h2 class="section-title">
+                <span class="sparkle">✦</span>
+                Celebrating Today
+                <span class="sparkle">✦</span>
+            </h2>
+            <div class="countdown-grid">
+                <div class="countdown-card">
+                    <div class="countdown-ring">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="54" class="ring-bg"/>
+                            <circle cx="60" cy="60" r="54" class="ring-fill ring-hours"/>
+                        </svg>
+                        <div class="countdown-number" id="hours">00</div>
+                    </div>
+                    <div class="countdown-label">Hours of Joy</div>
+                </div>
+                <div class="countdown-card">
+                    <div class="countdown-ring">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="54" class="ring-bg"/>
+                            <circle cx="60" cy="60" r="54" class="ring-fill ring-minutes"/>
+                        </svg>
+                        <div class="countdown-number" id="minutes">00</div>
+                    </div>
+                    <div class="countdown-label">Minutes of Smiles</div>
+                </div>
+                <div class="countdown-card">
+                    <div class="countdown-ring">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="54" class="ring-bg"/>
+                            <circle cx="60" cy="60" r="54" class="ring-fill ring-seconds"/>
+                        </svg>
+                        <div class="countdown-number" id="seconds">00</div>
+                    </div>
+                    <div class="countdown-label">Seconds of Love</div>
+                </div>
+            </div>
+            <p class="countdown-note">Every second of today is dedicated to YOU!</p>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="birthday-footer">
+            <div class="footer-firework"></div>
+            <div class="footer-cake">🎂</div>
+            <h2 class="footer-title">Happy Birthday Ridhi!</h2>
+            <p class="footer-subtitle">Made with ❤️ just for you</p>
+            <div class="footer-stars">
+                <span>⭐</span><span>🌟</span><span>✨</span><span>🌟</span><span>⭐</span>
+            </div>
+            <button class="replay-btn" onclick="location.reload()">
+                🔄 Replay the Magic
+            </button>
+            <p class="footer-copy">© 2026 — Your Special Day</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
