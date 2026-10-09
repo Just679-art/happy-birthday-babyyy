@@ -1,5 +1,5 @@
 /* ============================================
-   HAPPY BIRTHDAY RIDHI - ENHANCED SCRIPTS
+   HAPPY BIRTHDAY AROHII JI - ENHANCED SCRIPTS
    ============================================ */
 
 // ========== CURSOR SPARKLE TRAIL ==========
